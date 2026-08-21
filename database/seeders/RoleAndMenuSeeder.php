@@ -57,9 +57,9 @@ class RoleAndMenuSeeder extends Seeder
             ['parent' => 'Transaksi', 'name' => 'Pembayaran', 'slug' => 'payment.index', 'path' => '/admin/payment', 'icon' => 'ri-wallet-3-line', 'order_no' => 2],
             // KostKu: Laporan
             ['name' => 'Laporan', 'slug' => 'laporan', 'path' => null, 'icon' => 'ri-file-chart-line', 'order_no' => 5],
-            ['parent' => 'Laporan', 'name' => 'Laporan Booking', 'slug' => 'laporan.booking', 'path' => '/laporan/booking', 'icon' => 'ri-calendar-todo-line', 'order_no' => 1],
-            ['parent' => 'Laporan', 'name' => 'Laporan Pembayaran', 'slug' => 'laporan.pembayaran', 'path' => '/laporan/pembayaran', 'icon' => 'ri-money-dollar-circle-line', 'order_no' => 2],
-            ['parent' => 'Laporan', 'name' => 'Laporan Pendapatan', 'slug' => 'laporan.pendapatan', 'path' => '/laporan/pendapatan', 'icon' => 'ri-line-chart-line', 'order_no' => 3],
+            ['parent' => 'Laporan', 'name' => 'Laporan Booking', 'slug' => 'laporan.booking', 'path' => '/admin/laporan/booking', 'icon' => 'ri-calendar-todo-line', 'order_no' => 1],
+            ['parent' => 'Laporan', 'name' => 'Laporan Pembayaran', 'slug' => 'laporan.pembayaran', 'path' => '/admin/laporan/pembayaran', 'icon' => 'ri-money-dollar-circle-line', 'order_no' => 2],
+            ['parent' => 'Laporan', 'name' => 'Laporan Pendapatan', 'slug' => 'laporan.pendapatan', 'path' => '/admin/laporan/pendapatan', 'icon' => 'ri-line-chart-line', 'order_no' => 3],
 
             ['name' => 'Katalog Produk', 'slug' => 'products.index', 'path' => '/products', 'icon' => 'ri-shopping-bag-3-line', 'order_no' => 6],
             ['name' => 'Activity Log', 'slug' => 'activity-log.index', 'path' => '/activity-log', 'icon' => 'ri-history-line', 'order_no' => 7],

@@ -32,11 +32,16 @@ return Application::configure(basePath: dirname(__DIR__))
             // Jika request meminta JSON (API), berikan response JSON
             if ($request->is('api/*') || $request->expectsJson()) {
                 Log::error($e);
-                
+
                 $code = $e instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface ? $e->getStatusCode() : 500;
-                
+
+                // Jangan bocorkan detail internal (SQL/path/stack) pada server error saat debug off
+                $message = $code >= 500 && ! config('app.debug')
+                    ? 'Internal Server Error'
+                    : ($e->getMessage() ?: 'Internal Server Error');
+
                 return \App\Helpers\ResponseHelper::error(
-                    $e->getMessage() ?: 'Internal Server Error',
+                    $message,
                     code: $code
                 );
             }

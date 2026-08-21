@@ -9,7 +9,12 @@ uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 beforeEach(function () {
     $this->seed(DatabaseSeeder::class);
-    $this->kamar = Kamar::where('status', 'available')->first();
+
+    // Gunakan kamar yang benar-benar bersih (tanpa booking historis dari seeder)
+    // agar assertion count/first tidak tercampur data seed.
+    $this->kamar = Kamar::where('status', Kamar::STATUS_AVAILABLE)
+        ->whereDoesntHave('bookings')
+        ->first();
 });
 
 // ----------------------------------------------------------------
@@ -153,8 +158,8 @@ it('booking expired melepas kamar', function () {
     $this->post("/booking/guest/store/{$this->kamar->id}", dataGuest());
     $booking = Booking::where('guest_email', 'budi.tamu@mail.com')->first();
 
-    // paksa melewati batas waktu
-    $booking->update(['created_at' => now()->subHours(25)]);
+    // paksa melewati batas waktu (created_at di luar $fillable → wajib forceFill)
+    $booking->forceFill(['created_at' => now()->subHours(25)])->save();
 
     $count = app(App\Services\BookingService::class)->expireStale();
 

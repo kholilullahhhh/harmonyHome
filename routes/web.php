@@ -120,5 +120,10 @@ Route::middleware(['auth'])->group(function () {
             ->only(['index', 'show'])
             ->middleware('check.permission:payment.index');
         Route::post('payment/{payment}/mark-paid', [\App\Http\Controllers\PaymentController::class, 'markPaid'])->name('payment.mark-paid')->middleware('check.permission:payment.index');
+
+        // Laporan
+        Route::get('laporan/booking', [\App\Http\Controllers\ReportController::class, 'booking'])->name('laporan.booking.index')->middleware('check.permission:laporan.booking');
+        Route::get('laporan/pembayaran', [\App\Http\Controllers\ReportController::class, 'pembayaran'])->name('laporan.pembayaran.index')->middleware('check.permission:laporan.pembayaran');
+        Route::get('laporan/pendapatan', [\App\Http\Controllers\ReportController::class, 'pendapatan'])->name('laporan.pendapatan.index')->middleware('check.permission:laporan.pendapatan');
     });
 });

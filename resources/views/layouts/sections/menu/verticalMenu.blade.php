@@ -3,6 +3,7 @@
    $configData = Helper::appClasses();
 
    // Helper function to check if a menu item or any of its children is active (recursive)
+   if (!function_exists('isMenuItemActive')) {
    function isMenuItemActive($item, $currentRouteName, $currentUrl)
    {
        // Check if this item itself is active
@@ -34,11 +35,13 @@
            return true;
        }
 
-       return false;
-   }
+        return false;
+    }
+    }
 
-   // Helper function to check if any child (recursive) is active
-   function hasActiveChild($item, $currentRouteName, $currentUrl)
+    // Helper function to check if any child (recursive) is active
+    if (!function_exists('hasActiveChild')) {
+    function hasActiveChild($item, $currentRouteName, $currentUrl)
    {
        $children = $item->submenu ?? ($item->children ?? []);
 
@@ -56,8 +59,9 @@
            }
        }
 
-       return false;
-   }
+        return false;
+    }
+    }
 @endphp
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">

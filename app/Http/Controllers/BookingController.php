@@ -64,10 +64,18 @@ class BookingController extends Controller
 
     public function destroy(Booking $booking)
     {
-        in_array($booking->status, [Booking::STATUS_PENDING, Booking::STATUS_CANCELLED, Booking::STATUS_REJECTED, Booking::STATUS_EXPIRED], true)
-            || throw new InvalidArgumentException('Hanya booking pending/cancelled/rejected/expired yang dapat dihapus.');
+        try {
+            in_array($booking->status, [Booking::STATUS_PENDING, Booking::STATUS_CANCELLED, Booking::STATUS_REJECTED, Booking::STATUS_EXPIRED], true)
+                || throw new InvalidArgumentException('Hanya booking pending/cancelled/rejected/expired yang dapat dihapus.');
 
-        $this->service->delete($booking->id);
+            $this->service->delete($booking->id);
+        } catch (InvalidArgumentException $e) {
+            if (request()->wantsJson()) {
+                return ResponseHelper::error($e->getMessage());
+            }
+
+            return back()->with('error', $e->getMessage());
+        }
 
         if (request()->wantsJson()) {
             return ResponseHelper::success(null, 'Data booking berhasil dihapus!');
