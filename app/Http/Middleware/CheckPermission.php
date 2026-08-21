@@ -52,7 +52,10 @@ class CheckPermission
             abort(403, 'Akses ditolak. Anda tidak memiliki izin untuk tindakan ini.');
         }
 
-        if (! $request->user() || ! $request->user()->hasPermission($menuSlug, $action)) {
+        // Web request memakai guard default; request API Sanctum memakai guard sanctum.
+        $user = $request->user() ?? $request->user('sanctum');
+
+        if (! $user || ! $user->hasPermission($menuSlug, $action)) {
             abort(403, 'Akses ditolak. Anda tidak memiliki izin untuk tindakan ini.');
         }
 
