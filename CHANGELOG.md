@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   **KostKu Domain Schema**: Migrations for `lokasis`, `tipe_kamars`, `fasilitas`, `kosts`, `kamar` (+ pivot `kost_fasilitas`/`kamar_fasilitas`), `bookings`, `payments` (Midtrans-ready: `order_id`, `snap_token`, invoice number), and `reviews`; profile fields added to `users`.
+-   **KostKu Models**: `Lokasi`, `TipeKamar`, `Fasilitas`, `Kost`, `Kamar`, `Booking`, `Payment`, `Review` with relationships, status constants, and audit logging.
+-   **Roles & Menus**: New `pemilik` / `penyewa` roles and Master Data / Transaksi / Laporan sidebar menus in `RoleAndMenuSeeder`.
+-   **Seeders**: `MasterDataSeeder`, `KostSeeder` (10 kost, 5-8 kamar each), `BookingSeeder` (22 bookings/payments across all statuses + 22 reviews) with realistic Sulawesi Selatan data.
+
 ## [1.4.0] - 2026-02-23
 
 ### Added

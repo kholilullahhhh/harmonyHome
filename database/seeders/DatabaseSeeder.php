@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             RoleAndMenuSeeder::class,
             UserSeeder::class,
             SettingSeeder::class,
+            MasterDataSeeder::class,
+            KostSeeder::class,
+            BookingSeeder::class,
             ExtraMenuSeeder::class,
         ]);
     }

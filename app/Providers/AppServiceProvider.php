@@ -13,6 +13,34 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(
+            \App\Contracts\Repositories\PaymentRepository::class,
+            \App\Repositories\PaymentRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\BookingRepository::class,
+            \App\Repositories\BookingRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\KamarRepository::class,
+            \App\Repositories\KamarRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\KostRepository::class,
+            \App\Repositories\KostRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\FasilitasRepository::class,
+            \App\Repositories\FasilitasRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\TipeKamarRepository::class,
+            \App\Repositories\TipeKamarRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\Repositories\LokasiRepository::class,
+            \App\Repositories\LokasiRepository::class
+        );
         // Repository bindings (contract => concrete)
         $this->app->bind(
             \App\Contracts\Repositories\UserRepository::class,

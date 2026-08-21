@@ -33,6 +33,12 @@ class CheckPermission
             'products.export.pdf' => 'read',
             'products.import.excel' => 'create',
             'settings.clear-cache' => 'update',
+            'booking.confirm' => 'update',
+            'booking.reject' => 'update',
+            'booking.cancel' => 'update',
+            'booking.activate' => 'update',
+            'booking.complete' => 'update',
+            'payment.mark-paid' => 'update',
         ];
 
         $routeName = $request->route()->getName();

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class RoleAndMenuSeeder extends Seeder
 {
@@ -16,11 +15,13 @@ class RoleAndMenuSeeder extends Seeder
             ['name' => 'Admin', 'slug' => 'admin'],
             ['name' => 'User', 'slug' => 'user'],
             ['name' => 'Visitor', 'slug' => 'visitor'],
+            ['name' => 'Pemilik Kost', 'slug' => 'pemilik'],
+            ['name' => 'Penyewa', 'slug' => 'penyewa'],
         ];
 
         $roleIds = [];
         foreach ($roles as $role) {
-            $roleIds[$role['slug']] = DB::table('roles')->updateOrInsert(
+            DB::table('roles')->updateOrInsert(
                 ['slug' => $role['slug']],
                 [
                     'name' => $role['name'],
@@ -34,21 +35,41 @@ class RoleAndMenuSeeder extends Seeder
 
         // 2. Menus
         $menus = [
-            ['name' => 'Dashboard', 'slug' => 'dashboard', 'path' => '/', 'icon' => 'ri-home-smile-line', 'order_no' => 1],
+            ['name' => 'Dashboard', 'slug' => 'dashboard', 'path' => '/dashboard', 'icon' => 'ri-home-smile-line', 'order_no' => 1],
             ['name' => 'User Management', 'slug' => 'user-management', 'path' => null, 'icon' => 'ri-user-settings-line', 'order_no' => 2],
             ['parent' => 'User Management', 'name' => 'Users', 'slug' => 'user.index', 'path' => '/user', 'icon' => 'ri-user-line', 'order_no' => 1],
             ['parent' => 'User Management', 'name' => 'Roles', 'slug' => 'role.index', 'path' => '/role', 'icon' => 'ri-shield-user-line', 'order_no' => 2],
             ['parent' => 'User Management', 'name' => 'Menus', 'slug' => 'menu.index', 'path' => '/menu', 'icon' => 'ri-menu-search-line', 'order_no' => 3],
             ['parent' => 'User Management', 'name' => 'Permissions', 'slug' => 'permission.index', 'path' => '/permission', 'icon' => 'ri-lock-password-line', 'order_no' => 4],
-            ['name' => 'Katalog Produk', 'slug' => 'products.index', 'path' => '/products', 'icon' => 'ri-shopping-bag-3-line', 'order_no' => 3],
-            ['name' => 'Activity Log', 'slug' => 'activity-log.index', 'path' => '/activity-log', 'icon' => 'ri-history-line', 'order_no' => 4],
-            ['name' => 'API Docs', 'slug' => 'api-docs', 'path' => '/api/documentation', 'icon' => 'ri-book-open-line', 'order_no' => 5],
+
+            // KostKu: Master Data
+            ['name' => 'Master Data', 'slug' => 'master-data', 'path' => null, 'icon' => 'ri-building-line', 'order_no' => 3],
+            ['parent' => 'Master Data', 'name' => 'Data Kost', 'slug' => 'kost.index', 'path' => '/admin/kost', 'icon' => 'ri-building-2-line', 'order_no' => 1],
+            ['parent' => 'Master Data', 'name' => 'Data Kamar', 'slug' => 'kamar.index', 'path' => '/admin/kamar', 'icon' => 'ri-door-open-line', 'order_no' => 2],
+            ['parent' => 'Master Data', 'name' => 'Tipe Kamar', 'slug' => 'tipe-kamar.index', 'path' => '/admin/tipe-kamar', 'icon' => 'ri-layout-masonry-line', 'order_no' => 3],
+            ['parent' => 'Master Data', 'name' => 'Fasilitas', 'slug' => 'fasilitas.index', 'path' => '/admin/fasilitas', 'icon' => 'ri-checkbox-multiple-line', 'order_no' => 4],
+            ['parent' => 'Master Data', 'name' => 'Lokasi', 'slug' => 'lokasi.index', 'path' => '/admin/lokasi', 'icon' => 'ri-map-pin-line', 'order_no' => 5],
+
+            // KostKu: Transaksi
+            ['name' => 'Transaksi', 'slug' => 'transaksi', 'path' => null, 'icon' => 'ri-exchange-dollar-line', 'order_no' => 4],
+            ['parent' => 'Transaksi', 'name' => 'Booking', 'slug' => 'booking.index', 'path' => '/admin/booking', 'icon' => 'ri-calendar-check-line', 'order_no' => 1],
+
+            ['parent' => 'Transaksi', 'name' => 'Pembayaran', 'slug' => 'payment.index', 'path' => '/admin/payment', 'icon' => 'ri-wallet-3-line', 'order_no' => 2],
+            // KostKu: Laporan
+            ['name' => 'Laporan', 'slug' => 'laporan', 'path' => null, 'icon' => 'ri-file-chart-line', 'order_no' => 5],
+            ['parent' => 'Laporan', 'name' => 'Laporan Booking', 'slug' => 'laporan.booking', 'path' => '/laporan/booking', 'icon' => 'ri-calendar-todo-line', 'order_no' => 1],
+            ['parent' => 'Laporan', 'name' => 'Laporan Pembayaran', 'slug' => 'laporan.pembayaran', 'path' => '/laporan/pembayaran', 'icon' => 'ri-money-dollar-circle-line', 'order_no' => 2],
+            ['parent' => 'Laporan', 'name' => 'Laporan Pendapatan', 'slug' => 'laporan.pendapatan', 'path' => '/laporan/pendapatan', 'icon' => 'ri-line-chart-line', 'order_no' => 3],
+
+            ['name' => 'Katalog Produk', 'slug' => 'products.index', 'path' => '/products', 'icon' => 'ri-shopping-bag-3-line', 'order_no' => 6],
+            ['name' => 'Activity Log', 'slug' => 'activity-log.index', 'path' => '/activity-log', 'icon' => 'ri-history-line', 'order_no' => 7],
+            ['name' => 'API Docs', 'slug' => 'api-docs', 'path' => '/api/documentation', 'icon' => 'ri-book-open-line', 'order_no' => 8],
         ];
 
         $menuIdMap = [];
         foreach ($menus as $m) {
             $parentId = isset($m['parent']) ? ($menuIdMap[$m['parent']] ?? null) : null;
-            
+
             DB::table('menus')->updateOrInsert(
                 ['slug' => $m['slug']],
                 [
@@ -62,7 +83,7 @@ class RoleAndMenuSeeder extends Seeder
                     'updated_at' => now(),
                 ]
             );
-            
+
             $dbMenu = DB::table('menus')->where('slug', $m['slug'])->first();
             $menuIdMap[$m['name']] = $dbMenu->id;
 
@@ -78,51 +99,46 @@ class RoleAndMenuSeeder extends Seeder
                     'updated_at' => now(),
                 ]
             );
-
-            // Assign some to Admin
-            if (in_array($m['slug'], ['dashboard', 'user.index', 'activity-log.index'])) {
-                DB::table('role_menu')->updateOrInsert(
-                    ['role_id' => $roleIds['admin'], 'menu_id' => $dbMenu->id],
-                    [
-                        'can_create' => true,
-                        'can_read' => true,
-                        'can_update' => true,
-                        'can_delete' => false,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]
-                );
-            }
-
-            // Assign some to User
-            if (in_array($m['slug'], ['dashboard'])) {
-                DB::table('role_menu')->updateOrInsert(
-                    ['role_id' => $roleIds['user'], 'menu_id' => $dbMenu->id],
-                    [
-                        'can_create' => false,
-                        'can_read' => true,
-                        'can_update' => false,
-                        'can_delete' => false,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]
-                );
-            }
-
-            // Assign some to Visitor (Full view of public features but Read Only)
-            if (in_array($m['slug'], ['dashboard', 'products.index'])) {
-                DB::table('role_menu')->updateOrInsert(
-                    ['role_id' => $roleIds['visitor'], 'menu_id' => $dbMenu->id],
-                    [
-                        'can_create' => false,
-                        'can_read' => true,
-                        'can_update' => false,
-                        'can_delete' => false,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]
-                );
-            }
         }
+
+        // 3. Role-based menu permissions
+        $assign = function (string $roleSlug, array $slugs, bool $create, bool $read, bool $update, bool $delete) use ($roleIds) {
+            foreach ($slugs as $slug) {
+                $menuId = DB::table('menus')->where('slug', $slug)->value('id');
+                if (! $menuId) {
+                    continue;
+                }
+                DB::table('role_menu')->updateOrInsert(
+                    ['role_id' => $roleIds[$roleSlug], 'menu_id' => $menuId],
+                    [
+                        'can_create' => $create,
+                        'can_read' => $read,
+                        'can_update' => $update,
+                        'can_delete' => $delete,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]
+                );
+            }
+        };
+
+        $kostMenus = ['kost.index', 'kamar.index', 'tipe-kamar.index', 'fasilitas.index', 'lokasi.index'];
+        $transaksiMenus = ['booking.index', 'payment.index'];
+        $laporanMenus = ['laporan.booking', 'laporan.pembayaran', 'laporan.pendapatan'];
+
+        // Admin: kelola penuh domain kost + modul user dasar (tanpa hapus)
+        $assign('admin', array_merge(['dashboard', 'user.index', 'activity-log.index'], $kostMenus, $transaksiMenus, $laporanMenus), true, true, true, false);
+
+        // Pemilik: kelola kost & kamar miliknya (scoping di service), lihat transaksi & laporan
+        $assign('pemilik', array_merge(['dashboard'], $kostMenus), true, true, true, false);
+        $assign('pemilik', $transaksiMenus, false, true, true, false);
+        $assign('pemilik', $laporanMenus, false, true, false, false);
+
+        // Penyewa & User: hanya dashboard (fitur penyewa ada di halaman publik)
+        $assign('penyewa', ['dashboard'], false, true, false, false);
+        $assign('user', ['dashboard'], false, true, false, false);
+
+        // Visitor: read-only dashboard & katalog produk
+        $assign('visitor', ['dashboard', 'products.index'], false, true, false, false);
     }
 }
