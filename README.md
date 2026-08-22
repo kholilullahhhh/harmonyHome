@@ -40,7 +40,7 @@ For in-depth explanations of the features and how to use them, please refer to t
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/ookapratama/base-laravel.git
+git clone https://github.com/kholilullahhhh/harmonyHome.git
 cd base-laravel
 composer install && npm install
 ```
@@ -93,22 +93,3 @@ This scaffolding includes Repository, Service, Controller, Request, and **full C
 -   **System**: PHP 8.2+ Type Safety & Modern Features
 
 ---
-
-## 💖 Support & Sponsoring
-
-If you find this project useful, please consider supporting its development. Your support helps keep the project active and allows me to create more open-source tools.
-
--   **GitHub Sponsors**: [Sponsor @ookapratama](https://github.com/sponsors/ookapratama)
--   **Buy Me a Coffee**: [buymeacoffee.com/ookapratama](https://www.buymeacoffee.com/ookapratama)
-
-For Indonesian supporters:
-
--   **Trakteer**: [trakteer.id/ookapratama](https://trakteer.id/ftopxczkt5voq7rg0zyn/gift)
-
----
-
-## 📄 License
-
-This project is open-sourced software licensed under the [MIT license](LICENSE).
-
-_Developed with ❤️ by [Ooka Pratama](https://github.com/ookapratama)_
