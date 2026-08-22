@@ -20,7 +20,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'app_description',
-                'value' => 'Base project builder untuk project Ooka Pratama.',
+                'value' => 'Base project builder untuk project.',
                 'group' => 'general',
                 'type' => 'textarea',
                 'label' => 'Deskripsi Aplikasi',
@@ -50,7 +50,7 @@ class SettingSeeder extends Seeder
             // Contact & Social
             [
                 'key' => 'contact_email',
-                'value' => 'admin@ooka.id',
+                'value' => 'admin@gmail.id',
                 'group' => 'contact',
                 'type' => 'text',
                 'label' => 'Email Kontak',
@@ -64,7 +64,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'social_instagram',
-                'value' => 'https://instagram.com/ookapratama',
+                'value' => 'https://www.instagram.com/harmony.aathome/',
                 'group' => 'contact',
                 'type' => 'text',
                 'label' => 'URL Instagram',

@@ -5,7 +5,7 @@
 @section('content')
 <section class="py-5">
     <div class="container" style="max-width: 760px;">
-        <h1 class="h3 fw-bold mb-3">Tentang KostKu</h1>
+        <h1 class="h3 fw-bold mb-3">Tentang HarmonyHome</h1>
         <p class="text-muted">
             KostKu adalah platform penyewaan kost yang menghubungkan pemilik kost dengan pencari hunian
             secara mudah dan transparan. Kami percaya proses mencari tempat tinggal seharusnya sederhana:

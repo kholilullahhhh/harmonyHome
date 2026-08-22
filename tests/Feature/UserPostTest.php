@@ -12,20 +12,20 @@ beforeEach(function () {
 
 test('guest cannot create a user', function () {
     $this->post(route('user.store'), [
-        'name' => 'Ooka Pratama',
-        'email' => 'ooka@gmail.com',
+        'name' => 'harmonyHome',
+        'email' => 'harmonyhome@gmail.com',
         'password' => 'secret123',
         'role_id' => $this->targetRole->id,
     ])->assertRedirect(route('login'));
 
-    $this->assertDatabaseMissing('users', ['email' => 'ooka@gmail.com']);
+    $this->assertDatabaseMissing('users', ['email' => 'harmonyhome@gmail.com']);
 });
 
 test('admin can create a user', function () {
     $this->actingAs($this->admin)
         ->post(route('user.store'), [
-            'name' => 'Ooka Pratama',
-            'email' => 'ooka@gmail.com',
+            'name' => 'harmonyHome',
+            'email' => 'harmonyhome@gmail.com',
             'password' => 'secret123',
             'role_id' => $this->targetRole->id,
         ])
@@ -34,8 +34,8 @@ test('admin can create a user', function () {
 
     // UserService::store upper-cases the name as business logic
     $this->assertDatabaseHas('users', [
-        'email' => 'ooka@gmail.com',
-        'name' => 'OOKA PRATAMA',
+        'email' => 'harmonyhome@gmail.com',
+        'name' => 'HARMONYHOME',
         'role_id' => $this->targetRole->id,
     ]);
 });

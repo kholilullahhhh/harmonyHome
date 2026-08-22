@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2">
     <div class="container">
         <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="{{ route('home') }}">
-            <i class="bx bx-home-heart bx-sm"></i> KostKu
+            <i class="bx bx-home-heart bx-sm"></i> HarmonyHome
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar"
             aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,9 +16,9 @@
                     <a class="nav-link {{ request()->routeIs('front.kost.*') || request()->routeIs('front.kamar.*') ? 'active' : '' }}"
                         href="{{ route('front.kost.index') }}">Cari Kost</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('front.cara-kerja') ? 'active' : '' }}" href="{{ route('front.cara-kerja') }}">Cara Kerja</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('front.tentang') ? 'active' : '' }}" href="{{ route('front.tentang') }}">Tentang Kami</a>
                 </li>

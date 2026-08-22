@@ -210,4 +210,4 @@ Built-in tools to ensure the application is running smoothly.
 
 ---
 
-_Base Laravel - Created by Ooka Pratama_
+_Base Laravel - 

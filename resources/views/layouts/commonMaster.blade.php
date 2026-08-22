@@ -43,7 +43,8 @@
    <link rel="icon" type="image/x-icon"
       href="{{ config('variables.templateFavicon') ? asset('storage/' . config('variables.templateFavicon')) : asset('assets/img/favicon/favicon.ico') }}" />
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
    <!-- Include Styles -->
    <!-- $isFront is used to append the front layout styles only on the front layout otherwise the variable will be blank -->
    @include('layouts/sections/styles' . $isFront)

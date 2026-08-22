@@ -85,7 +85,7 @@
                                        <span class="input-group-text"><i
                                              class="{{ $setting->key == 'contact_email' ? 'ri-mail-line' : ($setting->key == 'contact_phone' ? 'ri-whatsapp-line' : 'ri-instagram-line') }}"></i></span>
                                        <input type="text" name="{{ $setting->key }}" class="form-control"
-                                          value="{{ $setting->value }}">
+                                          value="{{ $setting->value }}"
                                     </div>
                                  </div>
                               @endforeach
